@@ -17,9 +17,13 @@
  * under the License.
  */
 var app = {
-    supportTouchID: function() {
+    touchid: function() {
         touchid.checkSupport(function() {
-            alert("Touch ID Supported!");
+            touchid.authenticate(function() {
+                alert("Authentication successed!");
+            }, function() {
+                alert("Authentication failed. :(");
+            }, "Unlock this thing");
             return true;
         }, function() {
             alert("Not Supported... :(");
@@ -55,6 +59,6 @@ var app = {
 
         console.log('Received Event: ' + id);
 
-        this.supportTouchID();
+        this.touchid();
     }
 };
