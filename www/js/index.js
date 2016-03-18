@@ -17,6 +17,15 @@
  * under the License.
  */
 var app = {
+    supportTouchID: function() {
+        touchid.checkSupport(function() {
+            alert("Touch ID Supported!");
+            return true;
+        }, function() {
+            alert("Not Supported... :(");
+            return false;
+        });
+    },
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -45,5 +54,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+
+        this.supportTouchID();
     }
 };
